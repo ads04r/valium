@@ -30,7 +30,7 @@ To use Valium in your project:
 Method: *route*
 ---------------
 
-> boolean route ( string $regex, function $callback )
+> void route ( string $regex, function $callback )
 
 The *route* function acts in a similar way to FatFree's routing engine. The
 browser URI is compared to the regular expression $regex, and, if it matches,
@@ -42,7 +42,25 @@ format:
 The $match_array id an array as created by the *preg_match* function[2]. See
 the documentation for that function for more information. $get contains the
 arguments sent as part of the URI, and $post contains the POST data, if any,
-as an array.
+as an array. The function should return a value.
 
-[1] https://github.com/bcosca/fatfree
-[2] http://php.net/manual/en/function.preg-match.php
+Method: *run*
+----------------
+
+> array run ( void )
+
+Example *index.php* file
+========================
+
+include_once("lib/valium.php");
+
+$v = new Valium();
+
+$v->route("", function() { }
+
+
+References
+==========
+
+1. https://github.com/bcosca/fatfree
+2. http://php.net/manual/en/function.preg-match.php
