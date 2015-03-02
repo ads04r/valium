@@ -49,15 +49,29 @@ Method: *run*
 
 > array run ( void )
 
+The *run* function calls the necessary functions based on browser input and
+returns it ready for formatting, for example, as JSON:
+
+> print(json_encode($f->run(), true));
+
 Example *index.php* file
 ========================
 
-include_once("lib/valium.php");
+> $v = new Valium();
+> $v->throw_404_on_error = true;
+> 
+> $v->route("|/hello.world/([a-z0-9]+)$|", function($m, $get, $post)
+> {
+> 	$ret = array();
+> 	$ret['message'] = $m[1];
+> 	return(ret);
+> });
+> 
+> header("Content-type: application/json");
+> print(json_encode($v->run(), true));
+> exit();
 
-$v = new Valium();
-
-$v->route("", function() { }
-
+Call with http://[server]/[path]/hello.world/[something]
 
 References
 ==========
