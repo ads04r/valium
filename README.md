@@ -26,6 +26,9 @@ To use Valium in your project:
 >
 > $v = new Valium();
 
+You will also need to install htaccess-sample in the appropriate directory
+inside htdocs, named .htaccess.
+
 
 Method: *route*
 ---------------
